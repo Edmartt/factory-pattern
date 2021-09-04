@@ -6,5 +6,4 @@ public interface iDatabaseManager {
     
     Connection getConnection();
     void closeConnection();
-
 }
