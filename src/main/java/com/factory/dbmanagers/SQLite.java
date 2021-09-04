@@ -5,6 +5,10 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.PreparedStatement;
 
+
+/**
+ * Responsable de generar conexiones y desconexiones a SQLite
+ */
 public class SQLite implements iDatabaseManager{
     private String DRIVER = "org.sqlite.JDBC";
     private Connection connection = null;
@@ -32,22 +36,5 @@ public class SQLite implements iDatabaseManager{
         } catch (SQLException e) {
             e.printStackTrace();
         } 
-    }
-    public void createTables(Connection connection){
-        
-        String sql = "CREATE TABLE IF NOT EXISTS `users`( \n"
-        + "  `id` INTEGER PRIMARY KEY AUTOINCREMENT, \n"
-        + "  `name` varchar(30) NOT NULL UNIQUE,\n"
-        + "  `lastname` varchar(50),\n"
-        + "  `country` varchar(80) NOT NULL,\n"
-        + "   `email`  varchar(80) NOT NULL)";
-
-        try {
-            preparedStm = connection.prepareStatement(sql);
-             preparedStm.executeUpdate();
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
     }
 }
